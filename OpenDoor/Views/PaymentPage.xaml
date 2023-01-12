@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Templates="clr-namespace:OpenDoor.Templates"
+             x:Class="OpenDoor.Views.PaymentPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="responsibility_template">
+                <Grid x:DataType="Templates:PaymentItemModel">
+                    <Frame Margin="10" HeightRequest="120"
+                           BackgroundColor="{Binding BackgroundColor}">
+                        <Grid>
+                            <Label Text="{Binding  Responsibility.Description}"
+                                   FontAttributes="Bold" FontSize="20"/>
+                            <StackLayout VerticalOptions="End">
+                                <Label Text="{Binding Responsibility.Date,StringFormat='{0}'}"/>
+                            </StackLayout>
+                            <Label Text="{Binding Responsibility.Price,StringFormat='{0}€'}"
+                                   VerticalOptions="End" HorizontalOptions="End"/>
+                            <Button Style="{StaticResource trans_button}"
+                                    Command="{Binding CheckoutCommand}"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadCommand}">
+        <CollectionView ItemsSource="{Binding Responsibilities}"
+                        ItemTemplate="{StaticResource responsibility_template}"/>
+    </RefreshView>
+</ContentPage>

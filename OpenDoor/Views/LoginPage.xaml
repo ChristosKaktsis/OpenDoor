@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OpenDoor.Views.LoginPage"
+             Title="LoginPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="Padding" Value="10,2"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <ActivityIndicator IsRunning="{Binding IsScanning}"
+                           VerticalOptions="Start"/>
+        <Image Source="logo.png"
+               VerticalOptions="Start"/>
+        <Frame VerticalOptions="Center" Padding="15" Margin="0,100,0,0"
+               HasShadow="False" BorderColor="Transparent">
+            <VerticalStackLayout Spacing="25">
+                <!--<Button Text="Connect" VerticalOptions="End"
+                        Command="{Binding ConnectCommand}"/>-->
+                <Frame>
+                    <Entry Placeholder="Username"
+                           Text="{Binding UserName}"/>
+                </Frame>
+                <Frame>
+                    <Entry Placeholder="Password"
+                           Text="{Binding Password}"/>
+                </Frame>
+                <Button Text="Login"
+                        Command="{Binding LoginCommand}"/>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

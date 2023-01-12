@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:OpenDoor.ViewModels"
+             x:Class="OpenDoor.Views.MainPage"
+             Title="Main" Background="#4A148C">
+    <Grid x:DataType="viewModels:MainViewModel">
+        <Border StrokeThickness="4"
+                HorizontalOptions="Center"
+                HeightRequest="220" WidthRequest="150"
+                StrokeShape="RoundRectangle 110,110,110,110"
+                BackgroundColor="#6A1B9A">
+            <Border.Stroke>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="Orange"
+                          Offset="0.1" />
+                    <GradientStop Color="Brown"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Stroke>
+            <Grid>
+                <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                                   VerticalOptions="Start"/>
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Image  Source="{Binding Image}"/>
+                    <Label Text="{Binding Status}"
+                       TextColor="White"
+                       FontAttributes="Bold" FontSize="20"
+                       HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+                <Button Style="{StaticResource trans_button}"
+                        Command="{Binding ChangeCommand}"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</ContentPage>
